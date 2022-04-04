@@ -1,6 +1,7 @@
 package com.punkmetal.workshopmongodb.config;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TimeZone;
 
@@ -41,6 +42,9 @@ public class Instantiation implements CommandLineRunner {
 		Post post2 = new Post(null, sdf.parse("04/04/2022"), "Bora dormir", "Dormindo!", new AuthorDTO(maria));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
+		
+		maria.getPosts().addAll(Arrays.asList(post1, post2));
+		userRepository.save(maria);
 	}
 
 }
