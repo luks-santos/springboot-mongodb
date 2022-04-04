@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.punkmetal.workshopmongodb.domain.Post;
 import com.punkmetal.workshopmongodb.domain.User;
+import com.punkmetal.workshopmongodb.dto.AuthorDTO;
 import com.punkmetal.workshopmongodb.repository.PostRepository;
 import com.punkmetal.workshopmongodb.repository.UserRepository;
 
@@ -34,10 +35,11 @@ public class Instantiation implements CommandLineRunner {
 		User bob = new User(null, "Bob Grey", "bob@gmail.com");
 		User joao = new User(null, "Joao Escobar", "escobar@gmail.com");
 		
-		Post post1 = new Post(null, sdf.parse("04/04/2022"), "Partiu codar", "Codando o dia todo!", maria);
-		Post post2 = new Post(null, sdf.parse("04/04/2022"), "Bora dormir", "Dormindo!", maria);
-		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob, joao));
+		
+		Post post1 = new Post(null, sdf.parse("04/04/2022"), "Partiu codar", "Codando o dia todo!", new AuthorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("04/04/2022"), "Bora dormir", "Dormindo!", new AuthorDTO(maria));
+		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 	}
 
