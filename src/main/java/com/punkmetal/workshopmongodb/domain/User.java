@@ -58,7 +58,6 @@ public class User implements Serializable {
 		return Objects.hash(id);
 	}
 	
-	
 	public List<Post> getPosts() {
 		return posts;
 	}
